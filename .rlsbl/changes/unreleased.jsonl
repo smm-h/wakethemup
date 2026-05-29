@@ -3,3 +3,4 @@
 {"commits":["bc9d24af42059337beae728353eb0a7cfe809e92"],"user_facing":true,"description":"Environment health checks via strictcli check command","type":"feature"}
 {"commits":["53cc748286205cd8ac28da01217d173381a532df"],"user_facing":false}
 {"commits":["76a459bbac50d9cefd9adae9b3b6b2f8f732cfa8"],"user_facing":false}
+{"commits":["41873ce5b684aa48eec9a782415c54fa1442913e"],"user_facing":false}
