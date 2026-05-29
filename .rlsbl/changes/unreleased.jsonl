@@ -1,2 +1,3 @@
 {"commits":["981ed70865a13ea0cfccaba3c47c6cb1e5b0b469"],"user_facing":false}
 {"commits":["981ed70865a13ea0cfccaba3c47c6cb1e5b0b469"],"user_facing":true,"description":"**Fix.** Pre-built Linux binaries are now available on GitHub Releases.","type":"fix"}
+{"commits":["f57971f3dc9d77d447cd755b6a3aa7bfdb74a78b"],"user_facing":false}
