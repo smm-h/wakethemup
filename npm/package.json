@@ -1,6 +1,6 @@
 {
   "name": "wakethemup",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Manage systemd user timers from TOML configs",
   "license": "MIT",
   "repository": {

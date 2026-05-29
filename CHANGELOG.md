@@ -2,6 +2,13 @@
 
 # Changelog
 
+## 0.2.0
+
+### Features
+
+- **New.** npm package available: npx wakethemup or npm install -g wakethemup.
+- **New.** PyPI package available: `pipx install wakethemup`.
+
 ## 0.1.1
 
 ### Fixes
