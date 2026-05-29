@@ -6,5 +6,6 @@
   "output": "docs/_build/",
   "versions": [],
   "locales": [{"code": "en", "label": "English", "default": true}],
-  "base_url": "https://wakethemup.smmh.dev"
+  "base_url": "https://wakethemup.smmh.dev",
+  "root_files": ["docs/_CLAUDE.md", "docs/_README.md"]
 }
