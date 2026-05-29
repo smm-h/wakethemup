@@ -1,3 +1,5 @@
+app = "wake"
+
 [checks.systemd-available]
 tags = ["system"]
 severity = "error"

@@ -21,7 +21,16 @@ import (
 const version = "0.1.0"
 
 func main() {
-	app := strictcli.NewApp("wake", version, "Manage systemd user timers from TOML configs")
+	checksPath := ".strictcli/checks.toml"
+	checksEnabled := false
+
+	var opts []strictcli.AppOption
+	if _, err := os.Stat(checksPath); err == nil {
+		opts = append(opts, strictcli.WithChecks(checksPath))
+		checksEnabled = true
+	}
+
+	app := strictcli.NewApp("wake", version, "Manage systemd user timers from TOML configs", opts...)
 
 	// install: install a schedule from a TOML config file
 	app.Command("install", "Install a schedule from a TOML config file", handleInstall,
@@ -62,7 +71,9 @@ func main() {
 		),
 	)
 
-	registerChecks(app)
+	if checksEnabled {
+		registerChecks(app)
+	}
 
 	app.Run()
 }
@@ -467,13 +478,8 @@ func readWakeConfigPath(servicePath string) string {
 	return "(unknown)"
 }
 
-// registerChecks registers check implementations if checks.toml was discovered.
+// registerChecks registers check implementations. Only call when checks are enabled.
 func registerChecks(app *strictcli.App) {
-	// Checks are only available when .strictcli/checks.toml exists in cwd
-	if _, err := os.Stat(".strictcli/checks.toml"); err != nil {
-		return
-	}
-
 	cmd := systemd.NewExecCommander()
 
 	app.RegisterCheck("systemd-available", func(_ strictcli.CheckContext) strictcli.CheckResult {
