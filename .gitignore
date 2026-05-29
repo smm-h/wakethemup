@@ -18,3 +18,6 @@ dist/
 /wake
 .strictcli/schema.json
 docs/_build/
+.venv/
+pypi/wakethemup/_bin/*
+!pypi/wakethemup/_bin/.gitkeep
