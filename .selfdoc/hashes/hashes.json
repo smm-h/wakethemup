@@ -1,0 +1,46 @@
+{
+  "cli-check.md": {
+    "content": "5a156f5f0a2d363e33ff46bc58634c598fe27d175af00eb0fa1cdf8135c33216",
+    "description": "4119fde6c5aff07b0a53741df60779a48e319742528d251f3869358f44a8198d"
+  },
+  "cli-index.md": {
+    "content": "516ccbb9a0a638092b1345fcf369e030d6947a176f5711b69c01653168ebcb19",
+    "description": "faba420856d2f4e8b58e68f9faedaf3dda28a89629f7ede83164e98ea96c1b43"
+  },
+  "cli-install.md": {
+    "content": "4807bbc11b22928c69bf34bcb57b8c5f0ead14a5538e3c6d1a5794f9447fa7a7",
+    "description": "694f9add3c8df44116cf07356cde399e8d336e1e5d894b74a543805c4aa8aed3"
+  },
+  "cli-list.md": {
+    "content": "19d69485d995f8552f6c0397bbfb637f08761f6f18ed2ceb80851fefe7a2a4d9",
+    "description": "72086b3be2c5081d8b3edcc5e0ee9715ca6a25bd21da51c18894a09549b4273e"
+  },
+  "cli-remove.md": {
+    "content": "9d2e4d1ef87aaea883e21e571f9ec53acd69202fd32c7c40544144b5475e8233",
+    "description": "2b96bf36e78eae4e06ff2e845276d9e68bb440cdd33e1dc39a076273d82b8cff"
+  },
+  "cli-status.md": {
+    "content": "3443ad2c8331f0977cffe6d094cc60d1c59d4fea934d3cce0faeeab63073cc9d",
+    "description": "6276f16f4ba807cff683d99e43f50159c1d231939f38b4c77975ad31337a9dec"
+  },
+  "cmd-wake.md": {
+    "content": "feeacc37372d058a2897dd99a101eed1c3b35f63c50aa0e71249e981fdcc2932",
+    "description": "0e122a4f2da2ac1415d6d64564c2aab449e27d16fcf5622500be2ebdccb79bc9"
+  },
+  "gen-index.md": {
+    "content": "9c44de337b4a7cd3cc361bad686f66789fbd5fad04f232bbde71410340dbc600",
+    "description": "bb3cd9d34f014c0674a9285c25ee14b5b4abc5cf941f0d83594c301405e8f3b6"
+  },
+  "internal-config.md": {
+    "content": "a51b1122bf1af24e8da9e79e998bc66b828c14ce380651657951c728b53f210c",
+    "description": "5e2a41707cca15495af3f23267eab26b76818970a985927f168f5f010ab7ceb5"
+  },
+  "internal-systemd.md": {
+    "content": "ba6f1a31b93cde417a42e74ce5c0dac01bd05c8e1302eea170d30e8d5077597b",
+    "description": "816e46faeaf278d6df0f5b1d44f7eda2db778cc53482db120f8295103c370cb9"
+  },
+  "internal-unit.md": {
+    "content": "0670f245c80acf475c475e4a10fb5ee56460317540843caa103243002df9b1af",
+    "description": "ab6e1522d641ccde80ee4c17f4e88e42ec707d9d5e5c298b63e1bbf447cd1819"
+  }
+}
