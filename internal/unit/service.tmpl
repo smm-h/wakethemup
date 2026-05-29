@@ -1,0 +1,16 @@
+[Unit]
+Description={{.Description}}
+X-WakeConfig={{.ConfigPath}}
+
+[Service]
+Type=oneshot
+ExecStart={{.ExecStart}}
+{{- if .WorkingDirectory}}
+WorkingDirectory={{.WorkingDirectory}}
+{{- end}}
+{{- if .EnvFile}}
+EnvironmentFile={{.EnvFile}}
+{{- end}}
+{{- range .EnvVars}}
+Environment={{.}}
+{{- end}}
