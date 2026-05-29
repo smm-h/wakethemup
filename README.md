@@ -78,7 +78,13 @@ LOG_LEVEL = "info"
 
 ## Commands
 
-> *[selfdoc: table-commands requires a path attribute]*
+| Command | Description |
+| --- | --- |
+| `check` | Run project checks |
+| `install` | Install a schedule from a TOML config file |
+| `list` | List installed schedules |
+| `remove` | Remove an installed schedule |
+| `status` | Show status of a schedule |
 
 ## Behavior
 
@@ -90,4 +96,18 @@ LOG_LEVEL = "info"
 
 ## Packages
 
-> *[selfdoc: list-modules requires a path attribute]*
+- **cmd/wake/integration_test** (`cmd/wake/integration_test.go`)
+- **cmd/wake/main** (`cmd/wake/main.go`)
+- **internal/config/config** (`internal/config/config.go`)
+- **internal/config/config_test** (`internal/config/config_test.go`)
+- **internal/systemd/checks_test** (`internal/systemd/checks_test.go`)
+- **internal/systemd/exec** (`internal/systemd/exec.go`)
+- **internal/systemd/linger** (`internal/systemd/linger.go`)
+- **internal/systemd/linger_test** (`internal/systemd/linger_test.go`)
+- **internal/systemd/mock_test** (`internal/systemd/mock_test.go`)
+- **internal/systemd/systemd** (`internal/systemd/systemd.go`)
+- **internal/systemd/systemd_test** (`internal/systemd/systemd_test.go`)
+- **internal/systemd/types** (`internal/systemd/types.go`)
+- **internal/unit/escape** (`internal/unit/escape.go`)
+- **internal/unit/unit** (`internal/unit/unit.go`)
+- **internal/unit/unit_test** (`internal/unit/unit_test.go`)
