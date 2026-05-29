@@ -52,11 +52,11 @@ The config schema is versioned (`version = 1`). Key contracts:
 
 ## Modules
 
-:-: list-modules
+:-: list-modules path="."
 
 ## Commands
 
-:-: table-commands
+:-: table-commands path="cmd/wake"
 
 ## Testing
 

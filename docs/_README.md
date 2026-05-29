@@ -79,7 +79,7 @@ LOG_LEVEL = "info"
 
 ## Commands
 
-:-: table-commands
+:-: table-commands path="cmd/wake"
 
 ## Behavior
 
@@ -91,4 +91,4 @@ LOG_LEVEL = "info"
 
 ## Packages
 
-:-: list-modules
+:-: list-modules path="."
