@@ -1,6 +1,8 @@
 {
   "targets": [
-    "go"
+    "go",
+    {"name": "npm", "path": "npm/"},
+    {"name": "pypi", "path": "pypi/"}
   ],
   "private": false,
   "push_timeout": 120

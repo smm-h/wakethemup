@@ -1,0 +1,40 @@
+{
+  "name": "wakethemup",
+  "version": "0.1.1",
+  "description": "Manage systemd user timers from TOML configs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smm-h/wakethemup.git"
+  },
+  "homepage": "https://github.com/smm-h/wakethemup",
+  "scripts": {
+    "postinstall": "node install.js"
+  },
+  "bin": {
+    "wake": "bin/wake"
+  },
+  "files": [
+    "install.js",
+    "bin/"
+  ],
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "keywords": [
+    "systemd",
+    "timer",
+    "cron",
+    "scheduler",
+    "toml",
+    "cli",
+    "rlsbl"
+  ]
+}
