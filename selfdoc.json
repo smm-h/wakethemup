@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "language": "go",
+  "source": ["."],
+  "docs": "docs/",
+  "output": "docs/_build/",
+  "versions": [],
+  "locales": [{"code": "en", "label": "English", "default": true}]
+}
