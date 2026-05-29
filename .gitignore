@@ -19,5 +19,6 @@ dist/
 .strictcli/schema.json
 docs/_build/
 .venv/
+uv.lock
 pypi/wakethemup/_bin/*
 !pypi/wakethemup/_bin/.gitkeep
