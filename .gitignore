@@ -25,3 +25,4 @@ docs/_build/
 .selfdoc/
 
 .rlsbl/lock
+.strictcli/schema.json
