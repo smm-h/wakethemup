@@ -4,3 +4,9 @@
 {"commits":["53cc748286205cd8ac28da01217d173381a532df"],"user_facing":false}
 {"commits":["76a459bbac50d9cefd9adae9b3b6b2f8f732cfa8"],"user_facing":false}
 {"commits":["41873ce5b684aa48eec9a782415c54fa1442913e"],"user_facing":false}
+{"commits":["dce7addb87250e3f1e9e6fbfd114c0899edaaf34","296cba992fd90da0c9db2ebd8e53c35b79b0d358","b83816ab9c039a8cbdc9938ba948f583622c5fb8","8f24d440ca79557ac467e7e7f03cd2ade3861897"],"user_facing":true,"description":"**TOML config parsing, systemd unit generation, and lifecycle commands.** Define wake-up schedules in a config file and manage systemd timers with install, remove, list, and status commands.","type":"feature"}
+{"commits":["e39a76b50932758f28f941b9ce84d55d93e038c9"],"user_facing":true,"description":"**Real systemd health checks.** The check command verifies systemd is running, the user session is available, and lingering is enabled.","type":"feature"}
+{"commits":["c626700e990484feb7927911425e10b4111688d5"],"user_facing":true,"description":"**Fix flag parsing.** Flags with hyphens (e.g. --dry-run) are now correctly resolved.","type":"fix"}
+{"commits":["7d00d02e9d2694b17d442cb4a58c35f954caf587"],"user_facing":true,"description":"**Fix ExecStart quoting.** Shell commands in generated systemd units are now properly quoted for correct parsing.","type":"fix"}
+{"commits":["0206d79f4260776ca31ecf3d303de6338f3d0f13","e76734c89f04f61f430b808403a816c2c479855e","dec1f52edb45a7c5fb4c771b0efeefc471085fb2"],"user_facing":false}
+{"commits":["1500c14be7458a8e1beab595aa67a847308bc444"],"user_facing":false}
