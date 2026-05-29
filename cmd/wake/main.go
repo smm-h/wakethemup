@@ -483,7 +483,7 @@ func registerChecks(app *strictcli.App) {
 	cmd := systemd.NewExecCommander()
 
 	app.RegisterCheck("systemd-available", func(_ strictcli.CheckContext) strictcli.CheckResult {
-		path, err := exec.LookPath("systemctl")
+		path, err := cmd.LookPath("systemctl")
 		if err != nil {
 			return strictcli.CheckResult{Status: "fail", Message: "systemctl not found on PATH"}
 		}

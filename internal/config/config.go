@@ -5,7 +5,6 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"os/exec"
 	"regexp"
 	"strings"
 
@@ -39,6 +38,7 @@ type CommandConfig struct {
 // Commander runs external commands. Matches internal/systemd.Commander.
 type Commander interface {
 	Run(ctx context.Context, args ...string) (stdout string, stderr string, err error)
+	LookPath(name string) (string, error)
 }
 
 var (
@@ -245,7 +245,7 @@ func Validate(cfg *Config, commander Commander) error {
 	}
 
 	// Process exec string.
-	if err := resolveExec(cfg); err != nil {
+	if err := resolveExec(cfg, commander); err != nil {
 		return err
 	}
 
@@ -274,7 +274,7 @@ func Validate(cfg *Config, commander Commander) error {
 	return nil
 }
 
-func resolveExec(cfg *Config) error {
+func resolveExec(cfg *Config, commander Commander) error {
 	execStr := cfg.Command.Exec
 
 	// Check for shell metacharacters.
@@ -295,7 +295,7 @@ func resolveExec(cfg *Config) error {
 		return fmt.Errorf("exec is empty after splitting")
 	}
 
-	absPath, err := exec.LookPath(parts[0])
+	absPath, err := commander.LookPath(parts[0])
 	if err != nil {
 		return fmt.Errorf("exec binary not found: %s", parts[0])
 	}

@@ -24,6 +24,9 @@ type MockCommander struct {
 	// fallback key of just the first arg is also tried.
 	Responses []mockEntry
 	Calls     [][]string
+
+	// LookPathFunc is called by LookPath. If nil, returns ("", nil).
+	LookPathFunc func(name string) (string, error)
 }
 
 type mockEntry struct {
@@ -34,6 +37,14 @@ type mockEntry struct {
 // OnCall registers a response for a specific command string.
 func (m *MockCommander) OnCall(argsKey string, resp MockResponse) {
 	m.Responses = append(m.Responses, mockEntry{key: argsKey, response: resp})
+}
+
+// LookPath returns the result of LookPathFunc, or ("", nil) if not set.
+func (m *MockCommander) LookPath(name string) (string, error) {
+	if m.LookPathFunc != nil {
+		return m.LookPathFunc(name)
+	}
+	return "", nil
 }
 
 // Run looks up the response for the given args.

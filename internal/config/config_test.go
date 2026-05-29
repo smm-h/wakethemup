@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -13,6 +14,8 @@ import (
 type mockCommander struct {
 	// runFunc is called for each Run invocation. If nil, returns success.
 	runFunc func(ctx context.Context, args ...string) (string, string, error)
+	// lookPathFunc is called for each LookPath invocation. If nil, delegates to exec.LookPath.
+	lookPathFunc func(name string) (string, error)
 }
 
 func (m *mockCommander) Run(ctx context.Context, args ...string) (string, string, error) {
@@ -20,6 +23,13 @@ func (m *mockCommander) Run(ctx context.Context, args ...string) (string, string
 		return m.runFunc(ctx, args...)
 	}
 	return "", "", nil
+}
+
+func (m *mockCommander) LookPath(name string) (string, error) {
+	if m.lookPathFunc != nil {
+		return m.lookPathFunc(name)
+	}
+	return exec.LookPath(name)
 }
 
 // --- Parse tests ---

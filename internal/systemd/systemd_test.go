@@ -35,6 +35,21 @@ func TestDetectSystemd_NonZeroButNoError(t *testing.T) {
 	}
 }
 
+func TestDetectSystemd_MissingSystemctl(t *testing.T) {
+	mock := &MockCommander{
+		LookPathFunc: func(name string) (string, error) {
+			return "", fmt.Errorf("exec: %q: executable file not found in $PATH", name)
+		},
+	}
+	err := DetectSystemd(mock)
+	if err == nil {
+		t.Fatal("expected error for missing systemctl")
+	}
+	if got := err.Error(); !contains(got, "systemctl not found on PATH") {
+		t.Fatalf("unexpected error: %s", got)
+	}
+}
+
 func TestDetectSystemd_DeadUserSession(t *testing.T) {
 	mock := &MockCommander{}
 	mock.OnCall("systemctl --user status", MockResponse{
@@ -402,6 +417,10 @@ type countingCommander struct {
 	responses []MockResponse
 	callIdx   int
 	repeat    bool // if true, repeat the last response forever
+}
+
+func (c *countingCommander) LookPath(name string) (string, error) {
+	return "", nil
 }
 
 func (c *countingCommander) Run(_ context.Context, args ...string) (string, string, error) {

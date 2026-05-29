@@ -7,7 +7,6 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -16,7 +15,7 @@ import (
 
 // DetectSystemd checks that systemd is available and the user session is functional.
 func DetectSystemd(cmd Commander) error {
-	_, err := exec.LookPath("systemctl")
+	_, err := cmd.LookPath("systemctl")
 	if err != nil {
 		return fmt.Errorf("systemctl not found on PATH: systemd is required")
 	}

@@ -5,6 +5,7 @@ import "context"
 // Commander runs external commands (systemctl, loginctl, systemd-analyze).
 type Commander interface {
 	Run(ctx context.Context, args ...string) (stdout string, stderr string, err error)
+	LookPath(name string) (string, error)
 }
 
 // UnitPrefix is the naming convention for wake-managed systemd units.

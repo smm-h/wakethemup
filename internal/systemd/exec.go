@@ -20,6 +20,11 @@ func NewExecCommander() *ExecCommander {
 	return &ExecCommander{}
 }
 
+// LookPath searches for an executable in the system PATH.
+func (c *ExecCommander) LookPath(name string) (string, error) {
+	return exec.LookPath(name)
+}
+
 // Run executes an external command and returns its stdout, stderr, and any error.
 func (c *ExecCommander) Run(ctx context.Context, args ...string) (string, string, error) {
 	if len(args) == 0 {
