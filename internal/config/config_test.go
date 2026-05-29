@@ -994,6 +994,30 @@ func TestValidate_ExecWithRedirect(t *testing.T) {
 	}
 }
 
+func TestValidate_ExecWithInputRedirect(t *testing.T) {
+	cfg := &Config{
+		Version: 1,
+		Schedule: ScheduleConfig{
+			Name:        "test",
+			Description: "test",
+			Calendar:    "daily",
+		},
+		Command: CommandConfig{
+			Exec: "wc -l < /tmp/input.txt",
+		},
+	}
+
+	cmd := &mockCommander{}
+
+	err := Validate(cfg, cmd)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if !cfg.Command.IsShell {
+		t.Error("IsShell = false, want true for <")
+	}
+}
+
 func TestValidate_ExecWithSemicolon(t *testing.T) {
 	cfg := &Config{
 		Version: 1,
