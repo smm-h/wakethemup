@@ -2,3 +2,4 @@
 {"commits":["7e75deb6b0f097b7eeda3bffa32f2d79ecf648ee"],"user_facing":true,"description":"CLI with install, remove, list, and status commands","type":"feature"}
 {"commits":["bc9d24af42059337beae728353eb0a7cfe809e92"],"user_facing":true,"description":"Environment health checks via strictcli check command","type":"feature"}
 {"commits":["53cc748286205cd8ac28da01217d173381a532df"],"user_facing":false}
+{"commits":["76a459bbac50d9cefd9adae9b3b6b2f8f732cfa8"],"user_facing":false}
