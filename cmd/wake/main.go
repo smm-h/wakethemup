@@ -51,19 +51,15 @@ func main() {
 	)
 
 	// status: show status of a schedule
-	followFlag := strictcli.BoolFlag("follow", "Stream journal entries")
-	jsonFlag := strictcli.BoolFlag("json", "Output status as JSON")
-
 	app.Command("status", "Show status of a schedule", handleStatus,
 		strictcli.WithArgs(
 			strictcli.NewArg("name", "Schedule name"),
 		),
 		strictcli.WithFlags(
+			strictcli.BoolFlag("follow", "Stream journal entries"),
+			strictcli.BoolFlag("json", "Output status as JSON"),
 			strictcli.IntFlag("lines", "Number of journal entries to show", strictcli.Default(20)),
 		),
-		strictcli.WithMutex(strictcli.MutexGroup{
-			Flags: []strictcli.Flag{followFlag, jsonFlag},
-		}),
 	)
 
 	registerChecks(app)
@@ -73,7 +69,7 @@ func main() {
 
 func handleInstall(args map[string]interface{}) int {
 	configPath := args["config"].(string)
-	dryRun, _ := args["dry-run"].(bool)
+	dryRun, _ := args["dry_run"].(bool)
 
 	// Read the TOML file.
 	data, err := os.ReadFile(configPath)
@@ -197,7 +193,7 @@ var nameRegexp = regexp.MustCompile(`^[a-zA-Z0-9_-]+$`)
 
 func handleRemove(args map[string]interface{}) int {
 	name := args["name"].(string)
-	dryRun, _ := args["dry-run"].(bool)
+	dryRun, _ := args["dry_run"].(bool)
 
 	// Validate name format.
 	if len(name) > 64 || !nameRegexp.MatchString(name) {
@@ -352,6 +348,11 @@ func handleStatus(args map[string]interface{}) int {
 	lines := args["lines"].(int)
 	follow, _ := args["follow"].(bool)
 	jsonOutput, _ := args["json"].(bool)
+
+	if follow && jsonOutput {
+		fmt.Fprintf(os.Stderr, "error: --follow and --json are mutually exclusive\n")
+		return 1
+	}
 
 	cmd := systemd.NewExecCommander()
 
