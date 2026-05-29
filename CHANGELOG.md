@@ -8,3 +8,10 @@
 
 - CLI with install, remove, list, and status commands
 - Environment health checks via strictcli check command
+- **TOML config parsing, systemd unit generation, and lifecycle commands.** Define wake-up schedules in a config file and manage systemd timers with install, remove, list, and status commands.
+- **Real systemd health checks.** The check command verifies systemd is running, the user session is available, and lingering is enabled.
+
+### Fixes
+
+- **Fix flag parsing.** Flags with hyphens (e.g. --dry-run) are now correctly resolved.
+- **Fix ExecStart quoting.** Shell commands in generated systemd units are now properly quoted for correct parsing.
