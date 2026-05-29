@@ -2,6 +2,12 @@
 
 # Changelog
 
+## 0.1.1
+
+### Fixes
+
+- **Fix.** Pre-built Linux binaries are now available on GitHub Releases.
+
 ## 0.1.0
 
 ### Features
