@@ -1,0 +1,27 @@
+# Build output
+/wake
+
+# Added by rlsbl
+node_modules/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+coverage/
+dist/
+*.egg-info/
+.rlsbl-notes-*.tmp
+.credentials.json
+.*-cache.json
+.env
+.env.local
+
+# Added by rlsbl
+*.local-only
+
+# Selfdoc / Cloudflare
+docs/_build/
+.wrangler/
+.selfdoc/
+
+.rlsbl/lock
