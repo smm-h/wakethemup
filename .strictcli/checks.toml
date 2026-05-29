@@ -1,0 +1,47 @@
+[checks.systemd-available]
+tags = ["system"]
+severity = "error"
+fast = true
+pure = false
+needs_network = false
+depends_on = []
+
+[checks.systemd-user-session]
+tags = ["system"]
+severity = "error"
+fast = true
+pure = false
+needs_network = false
+depends_on = ["systemd-available"]
+
+[checks.linger-enabled]
+tags = ["system"]
+severity = "error"
+fast = true
+pure = false
+needs_network = false
+depends_on = ["systemd-user-session"]
+
+[checks.unit-dir-exists]
+tags = ["system"]
+severity = "error"
+fast = true
+pure = true
+needs_network = false
+depends_on = ["systemd-user-session"]
+
+[checks.unit-dir-writable]
+tags = ["system"]
+severity = "error"
+fast = true
+pure = false
+needs_network = false
+depends_on = ["unit-dir-exists"]
+
+[checks.installed-units-healthy]
+tags = ["units"]
+severity = "warn"
+fast = false
+pure = false
+needs_network = false
+depends_on = ["systemd-user-session"]

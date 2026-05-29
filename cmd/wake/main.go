@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/smm-h/strictcli/go/strictcli"
 )
 
@@ -46,13 +48,13 @@ func main() {
 		),
 		strictcli.WithFlags(
 			strictcli.IntFlag("lines", "Number of journal entries to show", strictcli.Default(20)),
-			followFlag,
-			jsonFlag,
 		),
 		strictcli.WithMutex(strictcli.MutexGroup{
 			Flags: []strictcli.Flag{followFlag, jsonFlag},
 		}),
 	)
+
+	registerChecks(app)
 
 	app.Run()
 }
@@ -71,4 +73,37 @@ func handleList(args map[string]interface{}) int {
 
 func handleStatus(args map[string]interface{}) int {
 	return 0
+}
+
+// registerChecks registers placeholder check implementations if checks.toml was discovered.
+func registerChecks(app *strictcli.App) {
+	// Checks are only available when .strictcli/checks.toml exists in cwd
+	if _, err := os.Stat(".strictcli/checks.toml"); err != nil {
+		return
+	}
+
+	skipResult := func(_ strictcli.CheckContext) strictcli.CheckResult {
+		return strictcli.CheckResult{Status: "skip", Message: "not yet implemented"}
+	}
+
+	app.RegisterCheck("systemd-available", skipResult)
+	app.RegisterCheck("systemd-user-session", skipResult)
+	app.RegisterCheck("linger-enabled", skipResult)
+	app.RegisterCheck("unit-dir-exists", skipResult)
+	app.RegisterCheck("unit-dir-writable", skipResult)
+	app.RegisterCheck("installed-units-healthy", skipResult)
+
+	app.SetCheckContext(func() strictcli.CheckContext {
+		cwd, _ := os.Getwd()
+		return &wakeCheckContext{root: cwd}
+	})
+}
+
+// wakeCheckContext provides project context to check implementations.
+type wakeCheckContext struct {
+	root string
+}
+
+func (c *wakeCheckContext) ProjectRoot() string {
+	return c.root
 }
