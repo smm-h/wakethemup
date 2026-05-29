@@ -281,7 +281,10 @@ func resolveExec(cfg *Config) error {
 	for _, meta := range shellMetachars {
 		if strings.Contains(execStr, meta) {
 			cfg.Command.IsShell = true
-			cfg.Command.ResolvedExec = "/bin/sh -c " + execStr
+			// Escape any double quotes in the command, then wrap in quotes
+			// so systemd passes the entire string as a single argument to sh -c.
+			escaped := strings.ReplaceAll(execStr, `"`, `\"`)
+			cfg.Command.ResolvedExec = `/bin/sh -c "` + escaped + `"`
 			return nil
 		}
 	}

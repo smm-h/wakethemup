@@ -63,10 +63,10 @@ func TestEscapeExecShell(t *testing.T) {
 		want  string
 	}{
 		{"specifier %h", "%h", "%%h"},
-		{"double quotes", `"quoted"`, `\"quoted\"`},
+		{"double quotes preserved", `"quoted"`, `"quoted"`},
 		{"dollar stays", "$HOME", "$HOME"},
 		{"dollar not escaped", "$HOME/bin", "$HOME/bin"},
-		{"percent and quotes", `%h "arg"`, `%%h \"arg\"`},
+		{"percent escaped quotes preserved", `%h "arg"`, `%%h "arg"`},
 		{"empty string", "", ""},
 	}
 	for _, tt := range tests {
@@ -179,7 +179,7 @@ func TestGenerateServiceIsShellTrue(t *testing.T) {
 		},
 		Command: config.CommandConfig{
 			Exec:         "find /tmp -mtime +7 | xargs rm",
-			ResolvedExec: `/bin/sh -c find /tmp -mtime +7 | xargs rm`,
+			ResolvedExec: `/bin/sh -c "find /tmp -mtime +7 | xargs rm"`,
 			IsShell:      true,
 		},
 	}
@@ -189,8 +189,8 @@ func TestGenerateServiceIsShellTrue(t *testing.T) {
 		t.Fatalf("GenerateService() error: %v", err)
 	}
 
-	// Shell mode: $ should NOT be escaped, " should be escaped
-	assertContains(t, got, "ExecStart=/bin/sh -c find /tmp -mtime +7 | xargs rm")
+	// Shell mode: command is quoted for systemd, $ should NOT be escaped
+	assertContains(t, got, `ExecStart=/bin/sh -c "find /tmp -mtime +7 | xargs rm"`)
 }
 
 func TestGenerateServiceIsShellFalse(t *testing.T) {
@@ -227,7 +227,7 @@ func TestGenerateServiceShellEscapesQuotes(t *testing.T) {
 		},
 		Command: config.CommandConfig{
 			Exec:         `echo "hello world"`,
-			ResolvedExec: `/bin/sh -c echo "hello world"`,
+			ResolvedExec: `/bin/sh -c "echo \"hello world\""`,
 			IsShell:      true,
 		},
 	}
@@ -237,8 +237,9 @@ func TestGenerateServiceShellEscapesQuotes(t *testing.T) {
 		t.Fatalf("GenerateService() error: %v", err)
 	}
 
-	// Shell escaping should escape quotes
-	assertContains(t, got, `ExecStart=/bin/sh -c echo \"hello world\"`)
+	// Quotes inside the shell command are pre-escaped by resolveExec,
+	// outer quotes delimit the -c argument for systemd
+	assertContains(t, got, `ExecStart=/bin/sh -c "echo \"hello world\""`)
 }
 
 func TestGenerateServiceEnvWithSpecialChars(t *testing.T) {

@@ -17,12 +17,11 @@ func EscapeExecDirect(s string) string {
 	return s
 }
 
-// EscapeExecShell replaces % with %% and " with \" for ExecStart directives
-// that use /bin/sh -c. Leaves $ alone because the shell needs it.
+// EscapeExecShell replaces % with %% for ExecStart directives that use
+// /bin/sh -c. Leaves $ alone because the shell needs it. Does NOT escape "
+// because resolveExec already handles quoting for systemd's ExecStart parsing.
 func EscapeExecShell(s string) string {
-	s = strings.ReplaceAll(s, "%", "%%")
-	s = strings.ReplaceAll(s, `"`, `\"`)
-	return s
+	return strings.ReplaceAll(s, "%", "%%")
 }
 
 // QuoteEnvAssignment formats a key=value pair as a double-quoted Environment=
