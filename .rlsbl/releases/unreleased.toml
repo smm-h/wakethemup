@@ -1,4 +1,0 @@
-# Version bump type: patch, minor, or major
-bump = "patch"
-include = ["go"]
-exclude = []
