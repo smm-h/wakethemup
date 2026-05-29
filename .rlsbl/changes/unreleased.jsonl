@@ -1,3 +1,4 @@
 {"commits":["694f6a0ef8f40254434990fc879208809dd7939c"],"user_facing":true,"description":"**New.** npm package available: npx wakethemup or npm install -g wakethemup.","type":"feature"}
 {"commits":["9ffba3e3b0105c11ff7507a47604ef319d73d90a"],"user_facing":false}
 {"commits":["7770d5abf87e175a002085320ec3fa49efdaf996"],"user_facing":true,"description":"**New.** PyPI package available: `pipx install wakethemup`.","type":"feature"}
+{"commits":["124cf24a73b23cc6570a384905d81a7ec10ceb07"],"user_facing":false}
