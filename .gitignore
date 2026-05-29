@@ -15,6 +15,6 @@ dist/
 *.local-only
 
 # Project-specific
-wake
+/wake
 .strictcli/schema.json
 docs/_build/
