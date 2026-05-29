@@ -5,5 +5,6 @@
   "docs": "docs/",
   "output": "docs/_build/",
   "versions": [],
-  "locales": [{"code": "en", "label": "English", "default": true}]
+  "locales": [{"code": "en", "label": "English", "default": true}],
+  "base_url": "https://wakethemup.smmh.dev"
 }
