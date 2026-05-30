@@ -2,6 +2,12 @@
 
 # Changelog
 
+## 0.2.1
+
+### Fixes
+
+- **Fixed CI publishing.** npm and PyPI packages now publish correctly, and GoReleaser archives contain the binary as 'wake' instead of 'wakethemup'.
+
 ## 0.2.0
 
 ### Features
