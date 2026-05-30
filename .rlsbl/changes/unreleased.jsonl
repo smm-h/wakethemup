@@ -1,2 +1,3 @@
 {"commits":["ba3686f3999e2eb5a44c62b803049907d06818bf","15bea4f6c03da9d49f9819d860f4b8c8b7788999"],"user_facing":true,"description":"**Fixed CI publishing.** npm and PyPI packages now publish correctly, and GoReleaser archives contain the binary as 'wake' instead of 'wakethemup'.","type":"fix"}
 {"commits":["4fe9c8d4e9d14cb6191e460f7450706622324da5"],"user_facing":false}
+{"commits":["d43238904b886a4f48a648ec61ead5ec567a6a6e"],"user_facing":false}
