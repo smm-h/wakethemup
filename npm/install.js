@@ -36,8 +36,7 @@ function main() {
 
   const url = `https://github.com/smm-h/wakethemup/releases/download/v${version}/wakethemup_${version}_${os}_${arch}.tar.gz`;
 
-  // Archive contains "wakethemup" binary; we install it as "wake"
-  const archiveBinName = "wakethemup";
+  const archiveBinName = "wake";
   const destPath = path.join(__dirname, "bin", "wake");
 
   console.log(`Downloading wake v${version} for ${os}/${arch}...`);

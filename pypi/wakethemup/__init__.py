@@ -48,10 +48,9 @@ def _ensure_binary():
         )
         sys.exit(1)
 
-    archive_name = "wakethemup"
     with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
         for member in tar.getmembers():
-            if member.name == archive_name or member.name.endswith(f"/{archive_name}"):
+            if member.name == name or member.name.endswith(f"/{name}"):
                 member.name = name
                 tar.extract(member, _BIN_DIR)
                 break
